@@ -13,7 +13,7 @@ import android.view.View;
 /**
  * An example full-screen activity that shows and hides the system UI (i.e.
  * status bar and navigation/system bar) with user interaction.
- * 
+ *
  * @see SystemUiHider
  */
 public class FullscreenActivity extends Activity {
@@ -65,7 +65,6 @@ public class FullscreenActivity extends Activity {
 					int mControlsHeight;
 					int mShortAnimTime;
 
-					@Override
 					@TargetApi(Build.VERSION_CODES.HONEYCOMB_MR2)
 					public void onVisibilityChange(boolean visible) {
 						if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB_MR2) {
@@ -101,7 +100,7 @@ public class FullscreenActivity extends Activity {
 
 		// Set up the user interaction to manually show or hide the system UI.
 		contentView.setOnClickListener(new View.OnClickListener() {
-			@Override
+
 			public void onClick(View view) {
 				if (TOGGLE_ON_CLICK) {
 					mSystemUiHider.toggle();
@@ -114,8 +113,8 @@ public class FullscreenActivity extends Activity {
 		// Upon interacting with UI controls, delay any scheduled hide()
 		// operations to prevent the jarring behavior of controls going away
 		// while interacting with the UI.
-		findViewById(R.id.dummy_button).setOnTouchListener(
-				mDelayHideTouchListener);
+		//findViewById(R.id.dummy_button).setOnTouchListener(
+			//	mDelayHideTouchListener);
 	}
 
 	@Override
@@ -134,7 +133,7 @@ public class FullscreenActivity extends Activity {
 	 * while interacting with activity UI.
 	 */
 	View.OnTouchListener mDelayHideTouchListener = new View.OnTouchListener() {
-		@Override
+
 		public boolean onTouch(View view, MotionEvent motionEvent) {
 			if (AUTO_HIDE) {
 				delayedHide(AUTO_HIDE_DELAY_MILLIS);
@@ -145,7 +144,7 @@ public class FullscreenActivity extends Activity {
 
 	Handler mHideHandler = new Handler();
 	Runnable mHideRunnable = new Runnable() {
-		@Override
+
 		public void run() {
 			mSystemUiHider.hide();
 		}
